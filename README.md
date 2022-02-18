@@ -56,6 +56,47 @@ Check connector status:
 `curl -H "Accept:application/json" localhost:8083/connectors/`
 
 
-##Mendaftarkan konektor untuk memantau database 
+## Mendaftarkan konektor untuk memantau database 
 
 Dengan mendaftarkan konektor Debezium MySQL, konektor akan mulai memantau binlog server database MySQL. Binlog mencatat semua transaksi database (seperti perubahan pada baris individual dan perubahan pada skema). Ketika sebuah baris dalam database berubah, Debezium menghasilkan event perubahan.
+
+Configuration example:
+```
+{
+  "name": "inventory-connector",  
+  "config": {  
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "tasks.max": "1",  
+    "database.hostname": "mysql",  
+    "database.port": "3306",
+    "database.user": "debezium",
+    "database.password": "dbz",
+    "database.server.id": "184054",  
+    "database.server.name": "dbserver1",  
+    "database.include.list": "inventory",  
+    "database.history.kafka.bootstrap.servers": "kafka:9092",  
+    "database.history.kafka.topic": "schema-changes.inventory"  
+  }
+}
+```
+
+Configuration for this tutorial:
+```
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d \
+'{
+  "name": "inventory-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "tasks.max": "1",
+    "database.hostname": "mysql",
+    "database.port": "3306",
+    "database.user": "debezium",
+    "database.password": "dbz",
+    "database.server.id": "184054",
+    "database.server.name": "dbserver1",
+    "database.include.list": "inventory",
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "dbhistory.inventory"
+  }
+}'
+```
