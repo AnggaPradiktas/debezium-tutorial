@@ -154,18 +154,23 @@ Topic output
 ```
 
 **op**
+
 berisi nilai string yang menjelaskan jenis operasi. Nilai untuk konektor MySQL adalah c untuk membuat (atau menyisipkan), u untuk pembaruan, d untuk menghapus, dan r untuk membaca (dalam kasus snapshot).
 
 **before**
+
 berisi status baris sebelum peristiwa terjadi. Strukturnya akan dijelaskan oleh skema dbserver1.inventory.customers.Value Kafka Connect, yang digunakan konektor dbserver1 untuk semua baris dalam tabel inventory.customers.
 
 **after**
+
 berisi status baris setelah peristiwa terjadi. Strukturnya dijelaskan oleh skema dbserver1.inventory.customers.Value Kafka Connect yang sama dengan yang digunakan sebelumnya.
 
 **source**
+
 berisi struktur yang menjelaskan metadata sumber untuk acara, yang dalam kasus MySQL, berisi beberapa bidang: nama konektor, nama file binlog tempat acara direkam, posisi dalam file binlog tempat acara muncul, baris dalam acara (jika ada lebih dari satu), nama database dan tabel yang terpengaruh, ID utas MySQL yang membuat perubahan, apakah acara ini merupakan bagian dari snapshot, dan, jika tersedia, ID server MySQL, dan stempel waktu dalam hitungan detik.
 
 **ts_ms**
+
 berisi waktu (menggunakan jam sistem di JVM yang menjalankan tugas Kafka Connect) saat konektor memproses acara.
 
 
