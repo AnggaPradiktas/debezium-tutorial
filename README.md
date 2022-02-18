@@ -174,3 +174,9 @@ berisi struktur yang menjelaskan metadata sumber untuk acara, yang dalam kasus M
 berisi waktu (menggunakan jam sistem di JVM yang menjalankan tugas Kafka Connect) saat konektor memproses acara.
 
 
+
+
+## Tutorial Debezium Sink 
+
+https://github.com/debezium/debezium-examples/tree/main/unwrap-smt#jdbc-sink
+
